@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "to install nginx on server enter yes"
+read fun
+if[ $fun == yes ];
+then
+	if [`cat /etc/os-release |grep ^ID | grep Ubuntu` ];
+	then
+	sudo apt update
+	sudo apt install nginx
+
+        elif [  `cat /etc/os-release |grep ^ID | grep Debian`  ];
+	then
+		sudo apt update
+		sudo apt install nginx
+	else
+		sudo yum install epel-release
+        	sudo yum update
+	        sudo  yum install nginx
+	fi
+fi
+
+if [$fun == yes];
+then 
+	echo "installed successfully"
+else
+	echo "not installed"
+fi
